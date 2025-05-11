@@ -8,9 +8,9 @@ def index():
 
 @app.route('/subscribe', methods=['POST'])
 def subscribe():
-    email = request.form.get('email')
+    email = request.form['email']
     new_subscription = Subscription(email=email)
     db.session.add(new_subscription)
     db.session.commit()
-    flash('subscription successful', 'success')
+    flash('Subscription successful!!', 'success')
     return redirect(url_for('index'))
